@@ -16,3 +16,5 @@ yarn-error.log
 /public/build/
 /public/dist/
 /public/plugins/
+/composer.lock
+/package-lock.json
