@@ -16,7 +16,7 @@ class LoginController extends Controller
     {
         $credentials = $request->only('matricID','password');
         if (Auth::attempt($credentials)) {
-            return view('home');
+            return redirect()->route('home');
         }
     }
 }
