@@ -24,7 +24,7 @@
         <div class="card-body">
             <p class="login-box-msg">Sign in to start your session</p>
 
-            <form action="{{ route('login.auth') }}" method="post">
+            <form action="{{ route('login') }}" method="post">
                 @csrf
                 <div class="input-group mb-3">
                     <input type="text" name="matricID" class="form-control" placeholder="id no">

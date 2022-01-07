@@ -1,9 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\BookingController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,20 +14,22 @@ use App\Http\Controllers\RegisterController;
 */
 
 Route::get('/', function () {
-    return view('test');
-});
-Route::get('/test',[HomeController::class,'index']);
-
-Route::get('/home', [HomeController::class, 'home']);
-Route::get('/dashboard', [HomeController::class, 'dashboard']);
-
-// authentication
-
-Route::name('login.')->group(function () {
-    Route::get('/login', [LoginController::class, 'index'])->name('login');
-    Route::post('/auth', [LoginController::class, 'customLogin'])->name('auth');
+    return view('welcome');
 });
 
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
-// register
-Route::get('/register',[RegisterController::class, 'index']);
+// book parking
+Route::group(['prefix' => 'parking', 'as' => 'book-parking.'], function (){
+    Route::get('/index', [BookingController::class, 'index'])
+        ->name('index');
+
+    Route::post('/book', [BookingController::class, 'book'])
+        ->name('book');
+    Route::post('/get-booking-date', [BookingController::class, 'getBookingDate'])
+        ->name('get-booking-date');
+});
+
+require __DIR__.'/auth.php';
