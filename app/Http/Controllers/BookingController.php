@@ -22,7 +22,7 @@ class BookingController extends Controller
     {
         $booking = Booking::create([
             'user_id' => 0,
-            'date_booking' => 'none',
+            'date_booking' => $request->date_booking,
             'start_time' => $request->start_time,
             'parking_duration' => $request->parking_duration,
             'parking_slot' => $request->parking_slot
@@ -31,10 +31,15 @@ class BookingController extends Controller
         return redirect()->route('book-parking.index');
     }
 
-    public function getParking(Request $request)
+    public function getBookingDate(Request $request)
     {
-        dd($request);
-    }
+        $bookings = Booking::where('date_booking', $request->date_booking)->get();
+//        dd($bookings->toJson());
 
+        return view('parking.index', [
+            'date_booking' => $request->date_booking,
+            'bookings' => $bookings,
+        ]);
+    }
 
 }
