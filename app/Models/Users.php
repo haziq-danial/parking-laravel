@@ -9,7 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 
-class Fkusers extends Authenticatable
+class Users extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, HasRoles;
 
@@ -18,6 +18,9 @@ class Fkusers extends Authenticatable
      *
      * @var string[]
      */
+
+    protected $primaryKey = 'id';
+
     protected $fillable = [
         'fullName',
         'matricID',

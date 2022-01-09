@@ -16,6 +16,14 @@
 </head>
 <body class="hold-transition register-page">
 <div class="register-box">
+    @if ($errors->any())
+        @foreach($errors->all() as $error)
+            <div class="alert alert-danger alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
+                <p>{{ $error }}</p>
+            </div>
+        @endforeach
+    @endif
     <div class="card card-outline card-primary">
         <div class="card-header text-center">
             <a href="#" class="h1"><b>Admin</b>LTE</a>
@@ -67,7 +75,7 @@
                     </div>
                 </div>
                 <div class="input-group mb-3">
-                    <input type="password" class="form-control" placeholder="Retype password">
+                    <input type="password" name="password_confirmation" class="form-control" placeholder="Retype password">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-lock"></span>

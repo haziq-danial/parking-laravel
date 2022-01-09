@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\HomeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,16 +14,14 @@ use App\Http\Controllers\BookingController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'index']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
 // book parking
-Route::group(['prefix' => 'parking', 'as' => 'book-parking.'], function (){
+Route::group(['prefix' => 'parking', 'as' => 'book-parking.', 'middleware' => ['role:student']], function (){
     Route::get('/index', [BookingController::class, 'index'])
         ->name('index');
 

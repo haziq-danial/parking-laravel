@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Fkusers;
+use App\Models\Users;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -33,7 +33,7 @@ class RegisterController extends Controller
 //            'password' => Hash::make($request->password),
 //        ]));
 //        dd($request->fullName);
-        Auth::login($user = Fkusers::create([
+        Auth::login($user = Users::create([
             'fullName' => $request->fullName,
             'matricID' => $request->matricID,
             'email' => $request->email,
