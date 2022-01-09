@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use App\Models\Users;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
@@ -33,17 +33,31 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
+//        $request->validate([
+//            'name' => ['required', 'string', 'max:255'],
+//            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+//            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+//        ]);
+
         $request->validate([
-            'name' => ['required', 'string', 'max:255'],
+            'fullName' => ['required', 'string', 'max:255'],
+            'matricID' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'carPlate' => ['required', 'string', 'max:255'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
-        $user = User::create([
-            'name' => $request->name,
+
+        Auth::login($user = Users::create([
+            'fullName' => $request->fullName,
+            'matricID' => $request->matricID,
             'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
+            'carPlate' => $request->carPlate,
+            'snPicture' => 'none',
+            'password' => Hash::make($request->password)
+        ]));
+
+        $user->assignRole('student');
 
         event(new Registered($user));
 

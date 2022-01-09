@@ -11,8 +11,8 @@ class HomeController extends Controller
         return view('home');
     }
 
-    public function test()
+    public function index()
     {
-        return view('test');
+        return redirect()->route('book-parking.index');
     }
 }
