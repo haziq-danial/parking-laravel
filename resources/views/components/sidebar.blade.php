@@ -46,6 +46,22 @@
                             </a>
                         </li>
                     </ul>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('book-parking.current') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Current Booking</p>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('book-parking.previous') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Previous Booking</p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="nav-link">

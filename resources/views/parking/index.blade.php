@@ -42,7 +42,7 @@
                         <li class="breadcrumb-item">
                             <button type="button" class="btn btn-block btn-success" data-toggle="modal" data-target="#set-booking-date">
                                 <i class="fa fa-plus"></i>
-                                Add Items
+                                Select Booking Date
                             </button>
                         </li>
                     </ol>

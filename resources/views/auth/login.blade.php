@@ -45,11 +45,10 @@
                 <div class="row">
                     <div class="col-sm">
                         <div class="form-group">
-                            <select class="form-control" name="user_type">
+                            <select class="form-control" name="role_type">
                                 <option value="">-- Select User --</option>
-                                <option value="Admin">Admin</option>
-                                <option value="Student">Student</option>
-                                <option value="Staff">Staff</option>
+                                <option value="{{ \App\Classes\Constants\RoleType::ADMIN }}">Admin</option>
+                                <option value="{{ \App\Classes\Constants\RoleType::STUDENT }}">Student</option>
                             </select>
                         </div>
                     </div>

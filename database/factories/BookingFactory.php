@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Classes\Constants\BookingStatus;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class BookingFactory extends Factory
@@ -18,7 +19,8 @@ class BookingFactory extends Factory
             'date_booking' => '01/20/2022',
             'start_time' => 'test',
             'parking_duration'  => 'test',
-            'parking_slot' => $this->faker->regexify('[A-C]{1}[1-9]{1}')
+            'parking_slot' => $this->faker->regexify('[A-C]{1}[1-9]{1}'),
+            'status' => BookingStatus::ONGOING
         ];
     }
 

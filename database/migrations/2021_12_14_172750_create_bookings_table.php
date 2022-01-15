@@ -20,6 +20,7 @@ class CreateBookingsTable extends Migration
             $table->string('start_time');
             $table->string('parking_duration');
             $table->string('parking_slot');
+            $table->integer('status');
             $table->timestamps();
         });
     }

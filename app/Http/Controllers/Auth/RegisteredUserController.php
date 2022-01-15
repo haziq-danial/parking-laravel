@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Classes\Constants\RoleType;
 use App\Http\Controllers\Controller;
-use App\Models\Users;
+use App\Models\Car;
+use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
@@ -48,14 +50,19 @@ class RegisteredUserController extends Controller
         ]);
 
 
-        Auth::login($user = Users::create([
+        Auth::login($user = User::create([
             'fullName' => $request->fullName,
             'matricID' => $request->matricID,
             'email' => $request->email,
-            'carPlate' => $request->carPlate,
-            'snPicture' => 'none',
-            'password' => Hash::make($request->password)
+            'password' => Hash::make($request->password),
+            'role_type' => RoleType::STUDENT,
         ]));
+
+        $car = Car::create([
+            'user_id' => $user->user_id,
+            'carPlate' => $request->carPlate,
+            'snPicture' => 'none'
+        ]);
 
         $user->assignRole('student');
 
