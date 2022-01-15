@@ -59,7 +59,7 @@ class RegisteredUserController extends Controller
         ]));
 
         $car = Car::create([
-            'user_id' => $user->user_id,
+            'user_id' => Auth::id(),
             'carPlate' => $request->carPlate,
             'snPicture' => 'none'
         ]);
