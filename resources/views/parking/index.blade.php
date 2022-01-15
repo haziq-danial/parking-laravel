@@ -322,9 +322,19 @@
 
     <script type="text/javascript">
         $(function () {
+            var today = new Date();
+            today.setDate(today.getDate() + 1);
+            var dd = String(today.getDate()).padStart(2, '0');
+            var mm = String(today.getMonth() + 1).padStart(2, '0');
+            var yyyy = today.getFullYear();
+
+            today = `${mm}/${dd}/${yyyy}`;
+
+            console.log(today);
 
            $('#date_booking').datetimepicker({
-               format: 'L'
+               format: 'L',
+               minDate: new Date(today)
            });
 
         });
