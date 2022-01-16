@@ -25,6 +25,7 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <h1 class="m-0">Dashboard</h1>
+                    <p>You are signed in as {{ $user->fullName }}</p>
                 </div>
             </div>
         </div>
