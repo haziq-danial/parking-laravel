@@ -33,7 +33,7 @@
     <div class="content">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-md-12">
                     <div class="card">
                         <div class="card-header border-0">
                             <div class="d-flex justify-content-between">
@@ -223,6 +223,63 @@
                             </table>
                         </div>
                     </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Booking Details</h3>
+
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        @if(isset($booking))
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label>Booking ID</label>
+                                    <p>{{ $booking->booking_id }}</p>
+                                </div>
+                                <div class="form-group">
+                                    <label>Date Booking</label>
+                                    <p>{{ $booking->date_booking }}</p>
+                                </div>
+                                <div class="form-group">
+                                    <label>Start time</label>
+                                    <p>{{ $booking->start_time }}</p>
+                                </div>
+                                <div class="form-group">
+                                    <label>Duration</label>
+                                    <p>{{ $booking->parking_duration }}</p>
+                                </div>
+                                <div class="form-group">
+                                    <label>Parking Slot</label>
+                                    <p>{{ $booking->parking_slot }}</p>
+                                </div>
+                                <div class="form-group">
+                                    <label>Status</label>
+                                    @switch($booking->status)
+                                        @case(\App\Classes\Constants\BookingStatus::CHECKOUT)
+                                        <span class="badge bg-success">checkout</span>
+                                        @break
+                                        @case(\App\Classes\Constants\BookingStatus::ONGOING)
+                                        <span class="badge bg-warning">ongoing</span>
+                                        @break
+                                        @case(\App\Classes\Constants\BookingStatus::CANCELED)
+                                        <span class="badge bg-danger">canceled</span>
+                                        @break
+                                    @endswitch
+                                </div>
+                            </div>
+
+                        @else
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label>no data</label>
+                                </div>
+                            </div>
+                        @endif
                 </div>
             </div>
         </div>
