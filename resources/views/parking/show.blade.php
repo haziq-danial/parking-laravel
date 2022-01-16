@@ -56,8 +56,8 @@
                             <div class="form-group">
                                 <label>Status</label>
                                 @switch($booking->status)
-                                    @case(\App\Classes\Constants\BookingStatus::FINISHED)
-                                        <span class="badge bg-success">finished</span>
+                                    @case(\App\Classes\Constants\BookingStatus::CHECKOUT)
+                                        <span class="badge bg-success">checkout</span>
                                     @break
                                     @case(\App\Classes\Constants\BookingStatus::ONGOING)
                                         <span class="badge bg-warning">ongoing</span>

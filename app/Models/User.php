@@ -19,7 +19,7 @@ class User extends Authenticatable
      * @var string[]
      */
 
-    protected $primaryKey = 'id';
+    protected $primaryKey = 'user_id';
 
     protected $fillable = [
         'fullName',
@@ -47,4 +47,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function car()
+    {
+        return $this->hasOne(Car::class, 'user_id');
+    }
+
+    public function bookings()
+    {
+        return $this->hasMany(Car::class, 'user_id');
+    }
 }

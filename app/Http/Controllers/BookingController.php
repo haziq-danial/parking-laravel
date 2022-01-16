@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Classes\Constants\BookingStatus;
 use App\Models\Booking;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -59,6 +60,7 @@ class BookingController extends Controller
     public function getCurrent()
     {
         $booking = Booking::where('user_id', Auth::id())
+            ->with('user','car')
             ->where('status', BookingStatus::ONGOING)
             ->first();
 
@@ -70,7 +72,7 @@ class BookingController extends Controller
     public function getPrevious()
     {
         $bookings = Booking::where('user_id', Auth::id())
-            ->where('status', BookingStatus::FINISHED)
+            ->where('status', BookingStatus::CHECKOUT)
             ->orWhere('status', BookingStatus::CANCELED)
             ->get();
         $count = 0;
@@ -84,7 +86,7 @@ class BookingController extends Controller
     public function setFinished($booking_id)
     {
         $booking = Booking::find($booking_id);
-        $booking->status = BookingStatus::FINISHED;
+        $booking->status = BookingStatus::CHECKOUT;
         $booking->save();
 
         return redirect()->route('book-parking.previous');

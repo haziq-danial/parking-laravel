@@ -78,17 +78,7 @@
                                     {{ $booking->parking_slot }}
                                 </td>
                                 <td class="text-center">
-                                    @switch($booking->status)
-                                        @case(\App\Classes\Constants\BookingStatus::FINISHED)
-                                            <span class="badge bg-success">finished</span>
-                                        @break
-                                        @case(\App\Classes\Constants\BookingStatus::ONGOING)
-                                            <span class="badge bg-warning">ongoing</span>
-                                        @break
-                                        @case(\App\Classes\Constants\BookingStatus::CANCELED)
-                                            <span class="badge bg-danger">canceled</span>
-                                        @break
-                                    @endswitch
+                                    @include('components.booking-status-badge')
                                 </td>
                                 <td class="text-center">
                                     <div class="btn-group">
