@@ -15,7 +15,7 @@ class CarFactory extends Factory
     {
         return [
             'user_id' => 0,
-            'carPlate' => 'none',
+            'carPlate' => $this->faker->regexify('[A-Z]{2}[0-9]{3}'),
             'snPicture' => 'none',
         ];
     }

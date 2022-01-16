@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Car;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -21,6 +22,9 @@ class UserSeeder extends Seeder
 
         foreach ($students as $student)
         {
+            Car::factory()->create([
+                'user_id' => $student->user_id
+            ]);
             $student->assignRole('student');
         }
     }
