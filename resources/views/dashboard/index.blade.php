@@ -276,7 +276,7 @@
                         @else
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label>no booking</label>
+                                    <label>No Booking</label>
                                 </div>
                             </div>
                         @endif

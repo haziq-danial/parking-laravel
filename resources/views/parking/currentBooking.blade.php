@@ -90,7 +90,7 @@
                         @else
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label>no data</label>
+                                    <label>No Booking</label>
                                 </div>
                             </div>
                         @endif
