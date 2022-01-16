@@ -13,6 +13,6 @@ class HomeController extends Controller
 
     public function index()
     {
-        return redirect()->route('book-parking.index');
+        return redirect()->route('dashboard.index');
     }
 }
