@@ -65,7 +65,7 @@
                             <td>{{ $user->fullName }}</td>
                             <td class="text-center">{{ $user->matricID }}</td>
                             <td class="text-center">{{ $user->email }}</td>
-                            <td class="text-center">{{ $user->role_type }}</td>
+                            <td class="text-center">@include('components.user-role-type')</td>
                             <td class="text-center">{{ $user->car->carPlate }}</td>
                             <td class="text-center">
                                 <div class="btn-group">
