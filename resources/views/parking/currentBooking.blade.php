@@ -38,6 +38,10 @@
                         @if(isset($booking))
                             <div class="card-body">
                                 <div class="form-group">
+                                    <label>Booking ID</label>
+                                    <p>{{ $booking->booking_id }}</p>
+                                </div>
+                                <div class="form-group">
                                     <label>No Plate</label>
                                     <p>{{ $booking->car->carPlate }}</p>
                                 </div>
@@ -67,12 +71,12 @@
                                     <div class="justify-content-around">
                                         <a href="{{ route('book-parking.previous') }}" class="btn btn-secondary">All Booking</a>
                                         <button type="button"
-                                                onclick="event.preventDefault(); document.getElementById('set-booking-finished').submit();"
-                                                class="btn btn-success">Checkout Booking
-                                        </button>
-                                        <button type="button"
                                                 onclick="event.preventDefault(); document.getElementById('set-booking-cancel').submit();"
                                                 class="btn btn-danger">Cancel Booking
+                                        </button>
+                                        <button type="button"
+                                                onclick="event.preventDefault(); document.getElementById('set-booking-finished').submit();"
+                                                class="btn btn-success">Checkout
                                         </button>
                                     </div>
                                     <form id="set-booking-finished" action="{{ route('book-parking.set-finished', $booking->booking_id) }}" method="POST" style="display: none;">

@@ -38,6 +38,14 @@
                     @if(isset($booking))
                         <div class="card-body">
                             <div class="form-group">
+                                <label>Booking ID</label>
+                                <p>{{ $booking->booking_id }}</p>
+                            </div>
+                            <div class="form-group">
+                                <label>No Plate</label>
+                                <p>{{ $booking->car->carPlate }}</p>
+                            </div>
+                            <div class="form-group">
                                 <label>Date Booking</label>
                                 <p>{{ $booking->date_booking }}</p>
                             </div>
@@ -76,6 +84,11 @@
                             </div>
                         </div>
                     @endif
+                    <div class="card-footer">
+                        <div class="row justify-content-end">
+                            <a href="{{ route('book-parking.previous') }}" class="btn btn-secondary">All Booking</a>
+                        </div>
+                    </div>
                 </div>
                 <!-- /.card -->
             </div>

@@ -23,6 +23,7 @@ class BookingController extends Controller
 
     public function book(Request $request)
     {
+
         $booking = Booking::create([
             'user_id' => Auth::id(),
             'date_booking' => $request->date_booking,
@@ -31,6 +32,7 @@ class BookingController extends Controller
             'parking_slot' => $request->parking_slot,
             'status' => BookingStatus::ONGOING
         ]);
+
 
         return redirect()->route('book-parking.current');
     }
@@ -50,7 +52,7 @@ class BookingController extends Controller
 
     public function show($booking_id)
     {
-        $booking = Booking::find($booking_id);
+        $booking = Booking::with('car')->find($booking_id);
 
         return view('parking.show', [
             'booking' => $booking

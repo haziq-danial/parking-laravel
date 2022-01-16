@@ -18,7 +18,7 @@ class CreateBookingsTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('date_booking');
             $table->string('start_time');
-            $table->string('parking_duration');
+            $table->integer('parking_duration');
             $table->string('parking_slot');
             $table->integer('status');
             $table->timestamps();

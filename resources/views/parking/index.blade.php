@@ -74,11 +74,16 @@
                             </div>
                             <div class="form-group">
                                 <label>Start Time</label>
-                                <input type="text" name="start_time" class="form-control">
+                                <div class="input-group date" id="start_time" data-target-input="nearest">
+                                    <input type="text" name="start_time" class="form-control datetimepicker-input" data-target="#start_time"/>
+                                    <div class="input-group-append" data-target="#start_time" data-toggle="datetimepicker">
+                                        <div class="input-group-text"><i class="far fa-clock"></i></div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label>Parking Hours</label>
-                                <input type="text" name="parking_duration" class="form-control">
+                                <input type="number" name="parking_duration" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label>Parking Slot</label>
@@ -335,6 +340,10 @@
            $('#date_booking').datetimepicker({
                format: 'L',
                minDate: new Date(today)
+           });
+
+           $('#start_time').datetimepicker({
+               format: 'LT'
            });
 
         });
