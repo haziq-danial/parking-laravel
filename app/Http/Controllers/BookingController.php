@@ -39,9 +39,7 @@ class BookingController extends Controller
 
     public function getBookingDate(Request $request)
     {
-        $bookings = Booking::where('date_booking', $request->date_booking)
-            ->where('status', BookingStatus::ONGOING)
-            ->get();
+        $bookings = get_bookings($request->date_booking);
 //        dd($bookings->toJson());
 
         return view('parking.index', [
