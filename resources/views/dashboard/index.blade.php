@@ -38,7 +38,7 @@
                         <div class="card-header border-0">
                             <div class="d-flex justify-content-between">
                                 <h3 class="card-title">Available Parking slots for today</h3>
-                                <p>{{ date('d/m/Y') }}</p>
+                                <p>{{ $date }}</p>
                             </div>
                         </div>
                         <div class="card-body">
@@ -276,7 +276,7 @@
                         @else
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label>no data</label>
+                                    <label>no booking</label>
                                 </div>
                             </div>
                         @endif

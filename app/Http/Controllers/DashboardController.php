@@ -17,10 +17,10 @@ class DashboardController extends Controller
     public function index()
     {
         // get today date
-        $today = date('d/m/Y');
+        $date = date('m/d/Y', strtotime('+2 day'));
 
         // get bookings where date is today
-        $bookings = get_bookings($today);
+        $bookings = get_bookings($date);
 
         // get current booking
         $booking = Booking::where('user_id', Auth::id())
@@ -32,7 +32,8 @@ class DashboardController extends Controller
 //        dd($bookings);
         return view('dashboard.index', [
             'bookings' => $bookings,
-            'booking' => $booking
+            'booking' => $booking,
+            'date' => $date
         ]);
     }
 }
