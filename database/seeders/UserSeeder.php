@@ -27,5 +27,9 @@ class UserSeeder extends Seeder
             ]);
             $student->assignRole('student');
         }
+
+        Car::factory()->create([
+            'user_id' => $admin->user_id
+        ]);
     }
 }
