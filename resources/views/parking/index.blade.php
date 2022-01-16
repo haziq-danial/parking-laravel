@@ -91,6 +91,14 @@
                             </div>
                         </form>
                     </div>
+                    <div class="card-footer">
+                        <div class="row justify-content-around">
+                            <a href="{{ route('dashboard.index') }}" class="btn btn-secondary">Back to dashboard</a>
+                            <input type="button"
+                                   onclick="event.preventDefault(); document.getElementById('parking-detail-form').submit();"
+                                   value="Create Booking" class="btn btn-success float-right">
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="col-md-6">
@@ -288,12 +296,6 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-12">
-                <a href="#" class="btn btn-secondary">Cancel</a>
-                <input type="button" onclick="event.preventDefault(); document.getElementById('parking-detail-form').submit();" value="Create Booking" class="btn btn-success float-right">
-            </div>
-        </div>
     </section>
     <!-- /.content -->
 @endsection
@@ -334,8 +336,6 @@
             var yyyy = today.getFullYear();
 
             today = `${mm}/${dd}/${yyyy}`;
-
-            console.log(today);
 
            $('#date_booking').datetimepicker({
                format: 'L',

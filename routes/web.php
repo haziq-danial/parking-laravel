@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\DashboardController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -41,6 +42,13 @@ Route::group(['prefix' => 'parking', 'as' => 'book-parking.', 'middleware' => ['
         ->name('set-cancel');
     Route::get('/delete/{booking_id}', [BookingController::class, 'destroy'])
         ->name('delete');
+});
+
+// dashboard
+Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function() {
+    Route::get('/index', [DashboardController::class, 'index'])
+        ->name('index');
+
 });
 
 require __DIR__.'/auth.php';
