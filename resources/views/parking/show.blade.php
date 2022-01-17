@@ -85,7 +85,7 @@
                     @endif
                     <div class="card-footer">
                         <div class="row justify-content-end">
-                            <a href="{{ route('book-parking.previous') }}" class="btn btn-secondary">All Booking</a>
+                            <a href="javascript:history.back()" class="btn btn-secondary">All Booking</a>
                         </div>
                     </div>
                 </div>

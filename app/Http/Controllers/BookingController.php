@@ -24,7 +24,7 @@ class BookingController extends Controller
     public function view()
     {
         $bookings = Booking::with('user', 'car')->get();
-        $count = 1;
+        $count = 0;
 
         return view('parking.view', [
             'bookings' => $bookings,
