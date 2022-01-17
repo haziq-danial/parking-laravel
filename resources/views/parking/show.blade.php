@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{ asset('plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
 @endsection
 
-@section('title', 'Current Booking')
+@section('title', 'Booking Details')
 
 @section('content')
     <section class="content-header">
