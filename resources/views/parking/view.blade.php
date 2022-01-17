@@ -43,6 +43,12 @@
                             Date Booking
                         </th>
                         <th class="text-center" style="width: 1%">
+                            Name
+                        </th>
+                        <th class="text-center" style="width: 1%">
+                            Matric ID
+                        </th>
+                        <th class="text-center" style="width: 1%">
                             Time Start
                         </th>
                         <th class="text-center" style="width: 1%">
@@ -67,6 +73,12 @@
                             </td>
                             <td>
                                 {{ $booking->date_booking }}
+                            </td>
+                            <td class="text-center">
+                                {{ $booking->user->fullName }}
+                            </td>
+                            <td class="text-center">
+                                {{ $booking->user->matricID }}
                             </td>
                             <td class="text-center">
                                 {{ $booking->start_time }}

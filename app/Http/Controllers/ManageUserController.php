@@ -103,8 +103,8 @@ class ManageUserController extends Controller
         $user = User::with('car')->find($user_id);
         $car = $user->car;
 
-        $user->destroy();
-        $car->destroy();
+        $user->destroy($user->user_id);
+        $car->destroy($car->car_id);
 
         return redirect()->route('manage-user.index');
     }
