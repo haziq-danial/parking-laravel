@@ -67,6 +67,16 @@
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
+                        @can('view all booking')
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('book-parking.view') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>View all Parking</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        @endcan
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
                                 <a href="{{ route('book-parking.index') }}" class="nav-link">

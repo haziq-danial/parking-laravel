@@ -32,6 +32,9 @@ Route::group(['prefix' => 'parking', 'as' => 'book-parking.', 'middleware' => ['
         ->name('previous');
     Route::get('/show/{booking_id}', [BookingController::class, 'show'])
         ->name('show');
+    Route::get('/view', [BookingController::class, 'view'])
+        ->middleware('permission:view all booking')
+        ->name('view');
 
     Route::post('/book', [BookingController::class, 'book'])
         ->name('book');

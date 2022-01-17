@@ -24,6 +24,7 @@ class CreateRole extends Seeder
         Permission::create(['name' => 'create booking']);
         Permission::create(['name' => 'edit booking']);
         Permission::create(['name' => 'delete booking']);
+        Permission::create(['name' => 'view all booking']);
 
         // manage user
         Permission::create(['name' => 'manage user']);
@@ -42,6 +43,7 @@ class CreateRole extends Seeder
         $admin->givePermissionTo('create booking');
         $admin->givePermissionTo('edit booking');
         $admin->givePermissionTo('delete booking');
+        $admin->givePermissionTo('view all booking');
 
         $admin->givePermissionTo('manage user');
         $admin->givePermissionTo('add user');

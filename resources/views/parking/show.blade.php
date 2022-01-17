@@ -15,7 +15,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Current Booking</h1>
+                    <h1>Booking Details</h1>
                 </div>
 
             </div>
@@ -27,7 +27,6 @@
             <div class="col-md-6">
                 <div class="card card-primary">
                     <div class="card-header">
-                        <h3 class="card-title">Booking Details</h3>
 
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
