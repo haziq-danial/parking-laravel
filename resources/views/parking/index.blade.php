@@ -70,7 +70,7 @@
                             @csrf
                             <div class="form-group">
                                 <label>Date Booking</label>
-                                <input type="text" name="date_booking" @isset($date_booking) value="{{ $date_booking }}" @endisset readonly class="form-control">
+                                <input type="text" id="booking_input" name="date_booking" @isset($date_booking) value="{{ $date_booking }}" @endisset readonly class="form-control">
                             </div>
                             <div class="form-group">
                                 <label>Start Time</label>
@@ -314,21 +314,34 @@
 
     <script src="{{ asset('plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>
 
-    @isset($bookings)
-        <script type="text/javascript">
-            var datas = {{ \Illuminate\Support\Js::from($bookings) }};
-
-            datas.forEach((values) => {
-                var parking_ele = '#'+values.parking_slot;
-
-                $(parking_ele).removeClass('pointer');
-                $(parking_ele).addClass('not-allowed booked');
-            });
-        </script>
-    @endisset
-
     <script type="text/javascript">
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        $('#submit-date').click(function () {
+            var date_booking = $('#date-booking').val();
+            var booking_modal = $('#set-booking-date');
+            var booking_input = $('#booking_input');
+
+            $.post('/parking/get-booking-date',
+                {
+                    date_booking: date_booking
+                },
+            function (data, status) {
+                var values = JSON.parse(data);
+
+                sortBooking(values);
+                booking_modal.modal('hide');
+                booking_input.val(date_booking);
+            });
+        });
+
         $(function () {
+
             var today = new Date();
             today.setDate(today.getDate() + 1);
             var dd = String(today.getDate()).padStart(2, '0');
@@ -348,6 +361,15 @@
 
         });
         var before = '';
+
+        function sortBooking(datas) {
+            datas.forEach((values) => {
+                var parking_ele = '#'+values.parking_slot;
+
+                $(parking_ele).removeClass('pointer');
+                $(parking_ele).addClass('not-allowed booked');
+            });
+        }
         function getLocation(parking_id) {
             var parking_element = '#'+parking_id;
 
