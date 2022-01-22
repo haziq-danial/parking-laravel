@@ -18,7 +18,10 @@ class BookingController extends Controller
 
     public function index()
     {
-        return view('parking.index');
+        $users = User::all();
+        return view('parking.index', [
+            'users' => $users
+        ]);
     }
 
     public function view()
@@ -34,9 +37,18 @@ class BookingController extends Controller
 
     public function book(Request $request)
     {
+//        dd($request);
+        $booking_exists = Booking::where('user_id', $request->user_id)
+            ->where('status', BookingStatus::ONGOING)
+            ->first();
+//        dd(!is_null($booking_exists));
+
+        if (!is_null($booking_exists)) {
+            return redirect()->back()->with('message', 'Booking already existed');
+        }
 
         $booking = Booking::create([
-            'user_id' => Auth::id(),
+            'user_id' => $request->user_id,
             'date_booking' => $request->date_booking,
             'start_time' => $request->start_time,
             'parking_duration' => $request->parking_duration,
@@ -51,12 +63,8 @@ class BookingController extends Controller
     public function getBookingDate(Request $request)
     {
         $bookings = get_bookings($request->date_booking);
-//        dd($bookings->toJson());
 
-        return view('parking.index', [
-            'date_booking' => $request->date_booking,
-            'bookings' => $bookings,
-        ]);
+        return $bookings->toJson();
     }
 
     public function show($booking_id)
