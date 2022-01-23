@@ -359,6 +359,20 @@
         </script>
     @endif
 
+    @if($errors->any())
+        @foreach($errors->all() as $error)
+            <script type="text/javascript">
+                $(document).Toasts('create', {
+                    class: 'bg-danger',
+                    autohide: true,
+                    delay: 4000,
+                    title: 'Error',
+                    body: '{{ $error }}'
+                });
+            </script>
+        @endforeach
+    @endif
+
 
     <script type="text/javascript">
 

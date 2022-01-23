@@ -37,15 +37,21 @@ class BookingController extends Controller
 
     public function book(Request $request)
     {
-//        dd($request);
         $booking_exists = Booking::where('user_id', $request->user_id)
             ->where('status', BookingStatus::ONGOING)
             ->first();
-//        dd(!is_null($booking_exists));
+
+        $request->validate([
+            'user_id' => ['required'],
+            'start_timme' => ['required'],
+            'parking_duration' => ['required'],
+            'parking_slot' => ['required']
+        ]);
 
         if (!is_null($booking_exists)) {
             return redirect()->back()->with('message', 'Booking already existed');
         }
+
 
         $booking = Booking::create([
             'user_id' => $request->user_id,

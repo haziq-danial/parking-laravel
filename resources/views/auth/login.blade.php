@@ -16,6 +16,14 @@
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
+    @if ($errors->any())
+        @foreach($errors->all() as $error)
+            <div class="alert alert-danger alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
+                <p>{{ $error }}</p>
+            </div>
+        @endforeach
+    @endif
     <!-- /.login-logo -->
     <div class="card card-outline card-primary">
         <div class="card-header text-center">
